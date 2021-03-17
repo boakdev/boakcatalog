@@ -22,6 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import dev.brunocarvalho.boakcatalog.dto.UserDTO;
 import dev.brunocarvalho.boakcatalog.dto.UserInsertDTO;
+import dev.brunocarvalho.boakcatalog.dto.UserUpdateDTO;
 import dev.brunocarvalho.boakcatalog.services.UserService;
 
 @RestController
@@ -59,9 +60,9 @@ public class UserResource {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
-		dto = service.update(id, dto);
-		return ResponseEntity.ok().body(dto);
+	public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserUpdateDTO dto) {
+		UserDTO newDto = service.update(id, dto);
+		return ResponseEntity.ok().body(newDto);
 
 	}
 
